@@ -13,7 +13,7 @@ module MysqlCookbook
           pass_string = '-p' + Shellwords.escape(new_resource.parsed_server_root_password)
         end
 
-        pass_string = '-p' + ::File.open("#{prefix_dir}/etc/.mysql_root").read.chomp if ::File.exist?("#{prefix_dir}/etc/.mysql_root")
+        pass_string = '-p' + Shellwords.escape(::File.open("#{prefix_dir}/etc/.mysql_root").read.chomp) if ::File.exist?("#{prefix_dir}/etc/.mysql_root")
         pass_string
       end
 

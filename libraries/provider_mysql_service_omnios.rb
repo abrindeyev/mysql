@@ -198,7 +198,7 @@ class Chef
           execute 'create root marker' do
             sensitive true if sensitive_supported?
             cmd = '/bin/echo'
-            cmd << " '#{Shellwords.escape(new_resource.parsed_server_root_password)}'"
+            cmd << " #{Shellwords.escape(new_resource.parsed_server_root_password)}"
             cmd << ' > /etc/.mysql_root'
             cmd << ' ;/bin/chmod 0600 /etc/.mysql_root'
             command cmd
